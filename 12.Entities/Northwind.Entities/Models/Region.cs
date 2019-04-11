@@ -12,7 +12,9 @@ namespace Northwind.Entities.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Region
+    using Repository.Pattern.Ef6;
+    using Newtonsoft.Json;
+    public partial class Region : Entity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Region()
@@ -24,6 +26,7 @@ namespace Northwind.Entities.Models
         public string RegionDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    	[JsonIgnore]
         public virtual ICollection<Territories> Territories { get; set; }
     }
 }

@@ -12,7 +12,9 @@ namespace Northwind.Entities.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Employees
+    using Repository.Pattern.Ef6;
+    using Newtonsoft.Json;
+    public partial class Employees : Entity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employees()
@@ -43,16 +45,23 @@ namespace Northwind.Entities.Models
         public string PhotoPath { get; set; }
         public Nullable<int> AuthorizationID { get; set; }
     
+    	[JsonIgnore]
         public virtual Accounts Accounts { get; set; }
+    	[JsonIgnore]
         public virtual Authorizes Authorizes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    	[JsonIgnore]
         public virtual ICollection<AuthTokens> AuthTokens { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    	[JsonIgnore]
         public virtual ICollection<Employees> Employees1 { get; set; }
+    	[JsonIgnore]
         public virtual Employees Employees2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    	[JsonIgnore]
         public virtual ICollection<Orders> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    	[JsonIgnore]
         public virtual ICollection<Territories> Territories { get; set; }
     }
 }

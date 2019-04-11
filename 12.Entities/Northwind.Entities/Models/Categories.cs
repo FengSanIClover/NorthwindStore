@@ -12,7 +12,9 @@ namespace Northwind.Entities.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Categories
+    using Repository.Pattern.Ef6;
+    using Newtonsoft.Json;
+    public partial class Categories : Entity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Categories()
@@ -26,6 +28,7 @@ namespace Northwind.Entities.Models
         public byte[] Picture { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    	[JsonIgnore]
         public virtual ICollection<Products> Products { get; set; }
     }
 }

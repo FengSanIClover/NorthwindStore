@@ -12,7 +12,9 @@ namespace Northwind.Entities.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Products
+    using Repository.Pattern.Ef6;
+    using Newtonsoft.Json;
+    public partial class Products : Entity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Products()
@@ -31,9 +33,12 @@ namespace Northwind.Entities.Models
         public Nullable<short> ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
     
+    	[JsonIgnore]
         public virtual Categories Categories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    	[JsonIgnore]
         public virtual ICollection<Order_Details> Order_Details { get; set; }
+    	[JsonIgnore]
         public virtual Suppliers Suppliers { get; set; }
     }
 }

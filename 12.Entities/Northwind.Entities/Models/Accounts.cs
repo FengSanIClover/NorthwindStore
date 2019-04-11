@@ -12,7 +12,9 @@ namespace Northwind.Entities.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Accounts
+    using Repository.Pattern.Ef6;
+    using Newtonsoft.Json;
+    public partial class Accounts : Entity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Accounts()
@@ -24,10 +26,14 @@ namespace Northwind.Entities.Models
         public string UserAccount { get; set; }
         public string UserPassword { get; set; }
     
+    	[JsonIgnore]
         public virtual Accounts Accounts1 { get; set; }
+    	[JsonIgnore]
         public virtual Accounts Accounts2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    	[JsonIgnore]
         public virtual ICollection<AuthTokens> AuthTokens { get; set; }
+    	[JsonIgnore]
         public virtual Employees Employees { get; set; }
     }
 }

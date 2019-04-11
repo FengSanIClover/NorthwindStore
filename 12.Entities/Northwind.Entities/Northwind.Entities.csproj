@@ -139,7 +139,11 @@
     <Compile Include="Models\Territories.cs">
       <DependentUpon>NorthwindDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModuleSetUp.cs" />
+    <Compile Include="ModuleSetUp1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModuleSetUp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +169,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NorthwindDb.edmx</DependentUpon>
       <LastGenOutput>NorthwindDb.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModuleSetUp.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModuleSetUp1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

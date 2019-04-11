@@ -12,7 +12,9 @@ namespace Northwind.Entities.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Authorizes
+    using Repository.Pattern.Ef6;
+    using Newtonsoft.Json;
+    public partial class Authorizes : Entity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Authorizes()
@@ -24,9 +26,12 @@ namespace Northwind.Entities.Models
         public string AuthorizationType { get; set; }
         public string Description { get; set; }
     
+    	[JsonIgnore]
         public virtual Authorizes Authorizes1 { get; set; }
+    	[JsonIgnore]
         public virtual Authorizes Authorizes2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    	[JsonIgnore]
         public virtual ICollection<Employees> Employees { get; set; }
     }
 }

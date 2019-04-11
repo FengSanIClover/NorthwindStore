@@ -12,7 +12,9 @@ namespace Northwind.Entities.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Order_Details
+    using Repository.Pattern.Ef6;
+    using Newtonsoft.Json;
+    public partial class Order_Details : Entity
     {
         public int OrderID { get; set; }
         public int ProductID { get; set; }
@@ -20,7 +22,9 @@ namespace Northwind.Entities.Models
         public short Quantity { get; set; }
         public float Discount { get; set; }
     
+    	[JsonIgnore]
         public virtual Orders Orders { get; set; }
+    	[JsonIgnore]
         public virtual Products Products { get; set; }
     }
 }

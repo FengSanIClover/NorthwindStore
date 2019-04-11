@@ -6,12 +6,11 @@ using System.Web.Mvc;
 
 namespace Northwind.WebApi.Host.Controllers
 {
-    public class HomeController : Controller
+    public class LoginController : Controller
     {
-        public ActionResult Index()
+        // GET: Login
+        public ActionResult Login()
         {
-            ViewBag.Title = "Home Page";
-
             return View();
         }
     }

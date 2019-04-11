@@ -12,7 +12,9 @@ namespace Northwind.Entities.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AuthTokens
+    using Repository.Pattern.Ef6;
+    using Newtonsoft.Json;
+    public partial class AuthTokens : Entity
     {
         public int TokenID { get; set; }
         public Nullable<int> AccountID { get; set; }
@@ -20,7 +22,9 @@ namespace Northwind.Entities.Models
         public System.DateTime IssuedOn { get; set; }
         public System.DateTime ExpiresOn { get; set; }
     
+    	[JsonIgnore]
         public virtual Accounts Accounts { get; set; }
+    	[JsonIgnore]
         public virtual Employees Employees { get; set; }
     }
 }
