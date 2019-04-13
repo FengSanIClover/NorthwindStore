@@ -27,6 +27,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.WebApi.Host", "69
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinkpower.ModuleResolver", "00.Library\Thinkpower.ModuleResolver\Thinkpower.ModuleResolver.csproj", "{91DE9AAD-9B01-4545-82A8-26283285E369}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinkpower.Core", "00.Library\Thinkpower.Core\Thinkpower.Core.csproj", "{F1071A67-8AA2-44EA-B650-EAF681641AAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinkpower.Core.Web", "00.Library\Thinkpower.Core.Web\Thinkpower.Core.Web.csproj", "{DCBCAB4A-960E-48C1-8A79-AC2050719CCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinkpower.Core.App", "00.Library\Thinkpower.Core.App\Thinkpower.Core.App.csproj", "{A346B1D0-3161-4D60-9A6B-B8A03A553DD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +67,18 @@ Global
 		{91DE9AAD-9B01-4545-82A8-26283285E369}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91DE9AAD-9B01-4545-82A8-26283285E369}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91DE9AAD-9B01-4545-82A8-26283285E369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1071A67-8AA2-44EA-B650-EAF681641AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1071A67-8AA2-44EA-B650-EAF681641AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1071A67-8AA2-44EA-B650-EAF681641AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1071A67-8AA2-44EA-B650-EAF681641AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCBCAB4A-960E-48C1-8A79-AC2050719CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCBCAB4A-960E-48C1-8A79-AC2050719CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCBCAB4A-960E-48C1-8A79-AC2050719CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCBCAB4A-960E-48C1-8A79-AC2050719CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A346B1D0-3161-4D60-9A6B-B8A03A553DD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A346B1D0-3161-4D60-9A6B-B8A03A553DD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A346B1D0-3161-4D60-9A6B-B8A03A553DD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A346B1D0-3161-4D60-9A6B-B8A03A553DD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +91,9 @@ Global
 		{9CA38358-10FC-49A5-9394-E3C5854D8169} = {56B9155E-2D9B-4487-8ABF-5D49931CEA40}
 		{D931E23A-928B-4C59-B637-3CC190C7A5C3} = {1E887008-6483-4C94-BBB5-ED8E94CFED46}
 		{91DE9AAD-9B01-4545-82A8-26283285E369} = {18C1AA8A-5B0D-4FF1-A9D0-4D23CFCFBF17}
+		{F1071A67-8AA2-44EA-B650-EAF681641AAB} = {18C1AA8A-5B0D-4FF1-A9D0-4D23CFCFBF17}
+		{DCBCAB4A-960E-48C1-8A79-AC2050719CCC} = {18C1AA8A-5B0D-4FF1-A9D0-4D23CFCFBF17}
+		{A346B1D0-3161-4D60-9A6B-B8A03A553DD5} = {18C1AA8A-5B0D-4FF1-A9D0-4D23CFCFBF17}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4CBA472-EB87-429E-9934-D88C67FAB902}
