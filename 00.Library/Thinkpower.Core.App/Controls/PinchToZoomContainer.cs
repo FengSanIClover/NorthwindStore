@@ -13,7 +13,8 @@ namespace Thinkpower.Core.App.Controls
 
         private double screenWidth;
         private double screenHeight;
-        private double density;
+
+        // private double density;
 
         public PinchToZoomContainer()
         {

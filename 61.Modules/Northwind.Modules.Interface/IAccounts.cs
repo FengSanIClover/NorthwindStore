@@ -10,5 +10,6 @@ namespace Northwind.Modules.Interface
 {
    public interface IAccounts : IService<Accounts>
     {
+        Task<Employees> Authenticate(string userAccount, string userPassword);
     }
 }

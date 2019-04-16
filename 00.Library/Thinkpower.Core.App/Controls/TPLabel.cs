@@ -14,14 +14,14 @@ namespace Thinkpower.Core.App.Controls
 
         }
 
-        public static BindableProperty MaxLinesProperty =
-            BindableProperty.Create("MaxLines", typeof(int), typeof(TPLabel), int.MaxValue, BindingMode.Default);
+        //public static BindableProperty MaxLinesProperty =
+        //    BindableProperty.Create("MaxLines", typeof(int), typeof(TPLabel), int.MaxValue, BindingMode.Default);
 
-        public int MaxLines
-        {
-            get => (int)GetValue(MaxLinesProperty);
-            set => SetValue(MaxLinesProperty, value);
-        }
+        //public int MaxLines
+        //{
+        //    get => (int)GetValue(MaxLinesProperty);
+        //    set => SetValue(MaxLinesProperty, value);
+        //}
 
         protected override void OnBindingContextChanged()
         {

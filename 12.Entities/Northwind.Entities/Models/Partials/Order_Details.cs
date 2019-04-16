@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Northwind.Entities.Models
 {
-   public partial class Order_Details : Entity
+   public partial class Order_Details 
     {
     }
 }

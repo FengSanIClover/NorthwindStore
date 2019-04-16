@@ -16,5 +16,15 @@ namespace Northwind.Modules.Service
         {
 
         }
+
+        public async Task<Employees> Authenticate(string userAccount, string userPassword)
+        {
+            var result = this.Queryable()
+                             .Where(u => u.UserAccount == userAccount && u.UserPassword == userPassword)
+                             .Select(u => u.Employees)
+                             .SingleOrDefault();
+            return  result;
+
+        }
     }
 }

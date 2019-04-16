@@ -27,6 +27,7 @@ namespace Northwind.Modules.Service
             registrar.RegisterType<IShippers, ShippersService>();
             registrar.RegisterType<ISuppliers, SuppliersService>();
             registrar.RegisterType<ITerritories, TerritoriesService>();
+            registrar.RegisterType<IJWTService, JWTService>();
         }
     }
 }

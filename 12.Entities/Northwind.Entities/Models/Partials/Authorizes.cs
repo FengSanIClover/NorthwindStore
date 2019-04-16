@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Northwind.Entities.Models
 {
-   public partial class Authorizes : Entity
+   public partial class Authorizes
     {
     }
 }

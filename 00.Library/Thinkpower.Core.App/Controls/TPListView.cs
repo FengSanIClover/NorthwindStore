@@ -10,26 +10,26 @@ namespace Thinkpower.Core.App.Controls
     /// </summary>
     public class TPListView : ListView
     {
-        public static readonly BindableProperty TapCommandProperty =
-            BindableProperty.Create<TPListView, ICommand>(x => x.TapCommand, null);
+        //public static readonly BindableProperty TapCommandProperty =
+        //    BindableProperty.Create<TPListView, ICommand>(x => x.TapCommand, null);
 
-        public ICommand TapCommand
-        {
-            get { return (ICommand)GetValue(TapCommandProperty); }
-            set { SetValue(TapCommandProperty, value); }
-        }
+        //public ICommand TapCommand
+        //{
+        //    get { return (ICommand)GetValue(TapCommandProperty); }
+        //    set { SetValue(TapCommandProperty, value); }
+        //}
 
-        public TPListView() : base() { this.SetCommand(); }
-        public TPListView(ListViewCachingStrategy cachingStrategy) : base(cachingStrategy) { this.SetCommand(); }
+        //public TPListView() : base() { this.SetCommand(); }
+        //public TPListView(ListViewCachingStrategy cachingStrategy) : base(cachingStrategy) { this.SetCommand(); }
 
-        public void SetCommand()
-        {
-            this.ItemTapped += (sender, e) =>
-            {
-                this.SelectedItem = null;
-                if (this.TapCommand != null && this.TapCommand.CanExecute(e.Item))
-                    this.TapCommand.Execute(e.Item);
-            };
-        }
+        //public void SetCommand()
+        //{
+        //    this.ItemTapped += (sender, e) =>
+        //    {
+        //        this.SelectedItem = null;
+        //        if (this.TapCommand != null && this.TapCommand.CanExecute(e.Item))
+        //            this.TapCommand.Execute(e.Item);
+        //    };
+        //}
     }
 }

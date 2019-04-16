@@ -17,7 +17,9 @@ namespace Northwind.Entities.Models
     {
         public NorthwindDbContext()
             : base("name=NorthwindDbContext")
-        {
+        {   
+    		// 加上這行解決 Queryable 型別的 Entity 因循環參考而不能做 CRUD 的問題
+    		this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

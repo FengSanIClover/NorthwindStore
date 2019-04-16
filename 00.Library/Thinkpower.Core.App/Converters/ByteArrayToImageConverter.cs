@@ -26,7 +26,7 @@ namespace Thinkpower.Core.App.Converters
                     return retImageSource;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
