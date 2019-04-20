@@ -11,10 +11,5 @@ namespace Northwind.Modules.Interface
 {
    public interface IAuthTokens : IService<AuthTokens>
     {
-        Task<string> CreateToken(string identity, List<Claim> claims = null, DateTime? expires = null);
-
-        Task<ClaimsPrincipal> ValidateToken(string jwtToken, bool checkExpires);
-
-        Task<int> DeleteTokenByAccountAsync(string password);
     }
 }

@@ -10,5 +10,6 @@ namespace Northwind.Modules.Interface
 {
    public interface IEmployees : IService<Employees>
     {
+        Task<Employees> GetOne(string userAccount);
     }
 }

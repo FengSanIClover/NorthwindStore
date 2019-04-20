@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NorthwindDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NorthwindDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Accounts">
           <Key>
             <PropertyRef Name="EmployeeID" />
@@ -27,7 +27,7 @@
           </Key>
           <Property Name="TokenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AccountID" Type="int" />
-          <Property Name="Token" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Token" Type="varchar(max)" Nullable="false" />
           <Property Name="IssuedOn" Type="datetime" Nullable="false" />
           <Property Name="ExpiresOn" Type="datetime" Nullable="false" />
         </EntityType>
@@ -461,8 +461,7 @@
             <End Role="Territories" EntitySet="Territories" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NorthwindDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -495,7 +494,7 @@
           </Key>
           <Property Name="TokenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AccountID" Type="Int32" />
-          <Property Name="Token" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IssuedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ExpiresOn" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Accounts" Relationship="Self.FK_AuthTokens_Accounts" FromRole="AuthTokens" ToRole="Accounts" />

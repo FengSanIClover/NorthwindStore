@@ -16,12 +16,12 @@ namespace Northwind.WebApi.Host.Controllers.Apis
     public class AuthController : ApiController
     {
         private IAccounts accountsService;
-       // private IJWTService jwtService; //,IJWTService jwtService
+        private IJWTService jwtService; //
         private IAuthTokens authTokenService;
-        public AuthController(IAccounts accountsService, IAuthTokens authTokenService)
+        public AuthController(IAccounts accountsService, IAuthTokens authTokenService,IJWTService jwtService)
         {
             this.accountsService = accountsService;
-           // this.jwtService = jwtService;
+            this.jwtService = jwtService;
             this.authTokenService = authTokenService;
         }
 
@@ -41,7 +41,7 @@ namespace Northwind.WebApi.Host.Controllers.Apis
             {
                 var claims = new List<Claim>();
                 claims.Add(new Claim("TokenId", loginReq.UserAccount));
-                var jwtToken = await this.authTokenService.CreateToken(loginReq.UserPassword, claims: claims);
+                var jwtToken = await this.jwtService.CreateToken(loginReq.UserAccount, claims: claims);
                 var account = this.accountsService.Queryable()
                                                   .Where(u => u.UserAccount == loginReq.UserAccount)
                                                   .SingleOrDefault();
