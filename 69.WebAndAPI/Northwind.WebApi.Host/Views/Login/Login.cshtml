@@ -5,3 +5,16 @@
 
 <h2>Login</h2>
 
+<button id="btn_test" class="btn btn-success">TEST</button>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#btn_test").click(function () {
+                $.post("Login/Login").done(function () {
+                    alert("OK");
+                });
+            });
+        });
+    </script>
+    }

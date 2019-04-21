@@ -11,6 +11,7 @@ namespace Northwind.WebApi.Host
         {
             // Web API 設定和服務
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+            config.EnableCors();
             // Web API 路由
             config.MapHttpAttributeRoutes();
 

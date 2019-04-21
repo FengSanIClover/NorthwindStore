@@ -58,6 +58,9 @@
       <HintPath>..\..\packages\LinqKit.1.1.9.0\lib\net45\LinqKit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
@@ -67,6 +70,9 @@
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -78,6 +84,9 @@
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
@@ -107,9 +116,6 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
@@ -205,6 +211,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\Apis\AuthController.cs" />
+    <Compile Include="Controllers\Apis\BaseApiController.cs" />
     <Compile Include="Controllers\Apis\ProductsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -297,6 +304,18 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\00.Library\MyLibrary\MyLibrary.csproj">
+      <Project>{e6a84e0e-82dc-4fb2-bd62-7b18ec53ea8b}</Project>
+      <Name>MyLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Library\Thinkpower.Core.Web\Thinkpower.Core.Web.csproj">
+      <Project>{DCBCAB4A-960E-48C1-8A79-AC2050719CCC}</Project>
+      <Name>Thinkpower.Core.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\00.Library\Thinkpower.Core\Thinkpower.Core.csproj">
+      <Project>{F1071A67-8AA2-44EA-B650-EAF681641AAB}</Project>
+      <Name>Thinkpower.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\00.Library\Thinkpower.ModuleResolver\Thinkpower.ModuleResolver.csproj">
       <Project>{91de9aad-9b01-4545-82a8-26283285e369}</Project>
       <Name>Thinkpower.ModuleResolver</Name>
@@ -308,6 +327,10 @@
     <ProjectReference Include="..\..\12.Entities\Northwind.Entities\Northwind.Entities.csproj">
       <Project>{6f7d179d-2757-404b-911a-85d281bc7afd}</Project>
       <Name>Northwind.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\13.Adapters\Adapters\Adapters.csproj">
+      <Project>{ff9788f5-c4f4-4009-83ad-768cfab3b73f}</Project>
+      <Name>Adapters</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\61.Modules\Northwind.Modules.Interface\Northwind.Modules.Interface.csproj">
       <Project>{343ea443-e6f2-45b8-a9eb-0aea6d2790e2}</Project>

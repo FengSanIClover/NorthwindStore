@@ -9,14 +9,16 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Northwind.WebApi.Host.Controllers.Apis
 {
     [RoutePrefix("api/Auth")]
-    public class AuthController : ApiController
+    [EnableCors(origins:"*",headers:"*",methods:"*")]
+    public class AuthController : BaseApiController
     {
         private IAccounts accountsService;
-        private IJWTService jwtService; //
+        private IJWTService jwtService; 
         private IAuthTokens authTokenService;
         public AuthController(IAccounts accountsService, IAuthTokens authTokenService,IJWTService jwtService)
         {
@@ -26,10 +28,10 @@ namespace Northwind.WebApi.Host.Controllers.Apis
         }
 
         [Route("Test")]
-        [HttpGet]
+        [HttpPost]
         public IHttpActionResult Test()
         {
-            return Ok("OK");
+            return Success("OK");
         }
 
         [Route("login")]
@@ -54,7 +56,7 @@ namespace Northwind.WebApi.Host.Controllers.Apis
                 userInfo.Token = jwtToken;
                 userInfo.TokenExpiredOn = authToken.ExpiresOn;
 
-                return Ok(userInfo);
+                return Success(userInfo);
             }
             return Unauthorized();
         }
