@@ -47,6 +47,7 @@ namespace Northwind.Entities
             register.RegisterRepository<IRepositoryAsync<Shippers>, Repository<Shippers>>("Northwind");
             register.RegisterRepository<IRepositoryAsync<Suppliers>, Repository<Suppliers>>("Northwind");
             register.RegisterRepository<IRepositoryAsync<Territories>, Repository<Territories>>("Northwind");
+            register.RegisterRepository<IRepositoryAsync<NLog_Error>, Repository<NLog_Error>>("Northwind");
         }
     }
 }

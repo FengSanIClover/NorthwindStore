@@ -90,6 +90,9 @@
     <Compile Include="Models\Employees.cs">
       <DependentUpon>NorthwindDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NLog_Error.cs">
+      <DependentUpon>NorthwindDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\NorthwindDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

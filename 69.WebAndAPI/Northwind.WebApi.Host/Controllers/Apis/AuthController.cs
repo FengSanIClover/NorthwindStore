@@ -60,5 +60,12 @@ namespace Northwind.WebApi.Host.Controllers.Apis
             }
             return Unauthorized();
         }
+
+        [Route("GetAll")]
+        [HttpPost]
+        public async Task<IHttpActionResult> GetAll()
+        {
+            return Success(this.authTokenService.Queryable());
+        }
     }
 }

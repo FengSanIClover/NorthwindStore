@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Northwind.WebApi.Host.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -12,6 +13,10 @@ namespace Northwind.WebApi.Host
             // Web API 設定和服務
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
             config.EnableCors();
+
+            // Web API Message Handlers
+            config.MessageHandlers.Add(new LogMessageHandler());
+
             // Web API 路由
             config.MapHttpAttributeRoutes();
 

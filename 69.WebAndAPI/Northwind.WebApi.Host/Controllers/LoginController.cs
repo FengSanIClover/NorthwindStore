@@ -22,7 +22,7 @@ namespace Northwind.WebApi.Host.Controllers
         [HttpPost]
         public ActionResult Login(string id = null)
         {
-            var result = this.authAdapter.SendRequest<Response<string>>("Test");
+            var result = this.authAdapter.SendRequest<IEnumerable<AuthTokens>>("GetAll");
 
             return Json(result.Result);
         }

@@ -88,6 +88,27 @@
           <Property Name="EmployeeID" Type="int" Nullable="false" />
           <Property Name="TerritoryID" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Northwind.dbo.NLog_Error' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="NLog_Error">
+          <Key>
+            <PropertyRef Name="ErrorID" />
+            <PropertyRef Name="TimeStamp" />
+            <PropertyRef Name="ErrorLevel" />
+            <PropertyRef Name="Logger" />
+            <PropertyRef Name="Message" />
+          </Key>
+          <Property Name="ErrorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="ErrorLevel" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Logger" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Host" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="Source" Type="nvarchar(max)" />
+          <Property Name="Stacktrace" Type="nvarchar(max)" />
+          <Property Name="Detail" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Order Details">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -392,6 +413,20 @@
           <EntitySet Name="Shippers" EntityType="Self.Shippers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Territories" EntityType="Self.Territories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NLog_Error" EntityType="Self.NLog_Error" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [NLog_Error].[ErrorID] AS [ErrorID], 
+    [NLog_Error].[TimeStamp] AS [TimeStamp], 
+    [NLog_Error].[ErrorLevel] AS [ErrorLevel], 
+    [NLog_Error].[Logger] AS [Logger], 
+    [NLog_Error].[Message] AS [Message], 
+    [NLog_Error].[Host] AS [Host], 
+    [NLog_Error].[Type] AS [Type], 
+    [NLog_Error].[Source] AS [Source], 
+    [NLog_Error].[Stacktrace] AS [Stacktrace], 
+    [NLog_Error].[Detail] AS [Detail]
+    FROM [dbo].[NLog_Error] AS [NLog_Error]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Accounts_Accounts" Association="Self.FK_Accounts_Accounts">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="Accounts1" EntitySet="Accounts" />
@@ -919,7 +954,27 @@
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Territories" EntitySet="Territories" />
           </AssociationSet>
+          <EntitySet Name="NLog_Error" EntityType="NorthwindDbModel.NLog_Error" />
         </EntityContainer>
+        <EntityType Name="NLog_Error">
+          <Key>
+            <PropertyRef Name="ErrorID" />
+            <PropertyRef Name="TimeStamp" />
+            <PropertyRef Name="ErrorLevel" />
+            <PropertyRef Name="Logger" />
+            <PropertyRef Name="Message" />
+          </Key>
+          <Property Name="ErrorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ErrorLevel" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Logger" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Stacktrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1106,6 +1161,22 @@
               <ScalarProperty Name="TerritoryID" ColumnName="TerritoryID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="NLog_Error">
+            <EntityTypeMapping TypeName="NorthwindDbModel.NLog_Error">
+              <MappingFragment StoreEntitySet="NLog_Error">
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Stacktrace" ColumnName="Stacktrace" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Logger" ColumnName="Logger" />
+                <ScalarProperty Name="ErrorLevel" ColumnName="ErrorLevel" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="ErrorID" ColumnName="ErrorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
