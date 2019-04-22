@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Northwind.Entities.Models.Products>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <table id="dt" class="table table-striped table-bordered display" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>MyTitle</th>
+                    <th>MyMoney</th>
+                    <th>ActionButton</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Apple</td>
+                    <td>2000</td>
+                    <td>
+                        <button type="button">Edit</button>
+                        <button type="button">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Banana</td>
+                    <td>3000</td>
+                    <td>
+                        <button type="button">Edit</button>
+                        <button type="button">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Cherry</td>
+                    <td>4000</td>
+                    <td>
+                        <button type="button">Edit</button>
+                        <button type="button">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            //#region DataTables Setup
+            $("#dt").DataTable({
+                searching: false, // 關閉 Filter 功能
+                columnDefs: [{    // 定義最後資料行無法排序
+                    targets: [3],
+                    orderable: false
+                }]
+            });
+        });
+    </script>    
+}
+
+

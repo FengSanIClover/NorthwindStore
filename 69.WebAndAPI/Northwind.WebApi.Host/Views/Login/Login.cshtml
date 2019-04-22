@@ -5,14 +5,15 @@
 
 <h2>Login</h2>
 
-<button id="btn_test" class="btn btn-success">TEST</button>
+<button id="btn_test" class="btn btn-success">登入</button>
 
 @section scripts{
     <script>
         $(document).ready(function () {
             $("#btn_test").click(function () {
-                $.post("Login/Login").done(function () {
-                    alert("OK");
+                $.post("Login/Login").done(function (data) {
+                    alert(data.EmployeeName + "登入")
+                    window.location.href = '@Url.Action("Index","Products",null)';
                 });
             });
         });

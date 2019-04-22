@@ -1,4 +1,5 @@
 ﻿using Adapters;
+using Northwind.Domain.Models;
 using Northwind.Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,11 @@ namespace Northwind.WebApi.Host.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string id = null)
+        public ActionResult Login(Accounts accountReq)
         {
-            var result = this.authAdapter.SendRequest<IEnumerable<AuthTokens>>("GetAll");
+            accountReq.UserAccount = "1";
+            accountReq.UserPassword = "1";
+            var result = this.authAdapter.SendJsonRequest<UserInfo>("login",accountReq);
 
             return Json(result.Result);
         }

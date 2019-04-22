@@ -92,6 +92,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\11.Domain\Northwind.Domain\Northwind.Domain.csproj">
+      <Project>{9CA38358-10FC-49A5-9394-E3C5854D8169}</Project>
+      <Name>Northwind.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\12.Entities\Northwind.Entities\Northwind.Entities.csproj">
       <Project>{6f7d179d-2757-404b-911a-85d281bc7afd}</Project>
       <Name>Northwind.Entities</Name>
