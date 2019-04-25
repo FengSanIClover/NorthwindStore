@@ -118,5 +118,11 @@ namespace Northwind.WebApi.Host.Controllers
 
             return Json(returnObj,JsonRequestBehavior.AllowGet);
         }
+
+
+        public ActionResult JqueryBlockUI()
+        {
+            return View();
+        }
     }
 }

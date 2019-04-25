@@ -54,6 +54,7 @@
         </table>
     </div>
 </div>
+<button id="btn_jqueryUI" type="button">GO jQuery blockUI</button>
 
 @section scripts{
     <script>
@@ -71,7 +72,14 @@
             // 第二階段範例
             // ServerSide模式:點擊分頁、排序時，
             // DataTables會自動向Server端發出Ajax
-          var table =  $("#dt").DataTable({
+            var table = $("#dt")
+                .on("preXhr.dt", function (e, settings, data) {
+                    $.blockUI(); // 第三階段範例 
+                })
+                .on("xhr.dt", function (e, settings, json, xhr) {
+                    $.unblockUI();
+                })
+                .DataTable({
                 serverSide: true, // 啟用 ServerSide 模式
                 searching: false, // 關閉 Filter 功能
                 deferLoading: 0, // 畫面一載入時不發出 ajax 撈資料
@@ -106,9 +114,17 @@
                 //table.ajax.reload();
 
                 // draw：為了避免XSS攻擊，DataTables 傳遞什麼值，Server 端就跟著回傳什麼值
-                 table.draw();
+                //table.draw();
+
+                // 第三階段範例
+                //按下查詢按鈕，改變ajax url，立即取得資料
+                table.ajax.url("@Url.Action("AjaxDataTable", "Products")").load();
             });
             // 第二階段範例
+
+            $("#btn_jqueryUI").click(function () {
+                window.location.href = '@Url.Action("JqueryBlockUI", "Products")'
+            });
         });
     </script>
 }

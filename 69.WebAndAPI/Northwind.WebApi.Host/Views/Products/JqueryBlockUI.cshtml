@@ -1,0 +1,273 @@
+﻿
+@{
+    ViewBag.Title = "JqueryBlockUI";
+}
+
+<style>
+    .orange {
+        color: orange;
+    }
+
+    /* .mycontainer {
+        width: 200px;
+        height: 100px;
+    }*/
+    /*背景底*/
+    /*加!important覆寫原本樣式*/
+    /*background-color: #fff !important;白色底，視自己需求看要不要加*/
+    /*預設游標*/
+    /*.blockOverlay {
+        cursor: default !important; 
+    }*/
+
+    /*loading icon*/
+    /*定義動畫*/
+    /*@@keyframes circle {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }*/
+    /*加!important覆寫原本樣式*/
+    /*.blockMsg {
+        display: block !important; 當message為null時，強制顯示
+        width: 100px;
+        height: 100px;
+        top: 50% !important;
+        left: 50% !important;
+        margin-top: -50px;
+        margin-left: -50px;
+        border-radius: 50%; 正圓形
+        border: 6px solid #f2f2f2; 灰色線條
+        border-left: 6px solid #1696e7; 藍色線條
+        animation: circle 1.1s infinite linear; 轉動效果
+    }*/
+    /*===========================================================*/
+    /*.mycontainer2 {
+        width: 200px;
+        height: 100px;
+    }*/
+    /*上面兩個樣式不是重點*/
+
+    /*背景底*/
+    /*加!important覆寫原本樣式*/
+    /*.blockOverlay {
+        background-color: #fff !important; 白色底，視自己需求看要不要加
+        cursor: default !important; 預設游標
+    }*/
+    /*loading icon*/
+    /*.blockMsg2 {
+        width: 100px; width、height改變圓的直徑大小
+        height: 100px;
+        display: inline-block !important;
+        animation: container-rotate 1568ms linear infinite;
+    }*/
+
+    /*.spinner-layer {
+        height: 100%;
+        animation: fill-unfill-rotate 5332ms cubic-bezier(0.4,0,0.2,1) infinite both;
+    }
+
+    .circle-clipper {
+        display: inline-block;
+        position: relative;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+        .circle-clipper .circle {
+            box-sizing: border-box;
+            width: 200%;
+            border-width: 7px; 線條粗細
+            border-style: solid;
+            border-color: #4285f4;
+            border-bottom-color: transparent !important;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .circle-clipper.left .circle {
+            left: 0;
+            border-right-color: transparent !important;
+            animation: left-spin 1333ms cubic-bezier(0.4,0,0.2,1) infinite both
+        }
+
+        .circle-clipper.right .circle {
+            border-left-color: transparent !important;
+            animation: right-spin 1333ms cubic-bezier(0.4,0,0.2,1) infinite both
+        }*/
+
+    /*定義動畫*/
+    /*@@keyframes container-rotate {
+        to {
+            transform: rotate(360deg)
+        }
+    }
+
+    @@keyframes fill-unfill-rotate {
+        12.5% {
+            transform: rotate(135deg)
+        }
+
+        25% {
+            transform: rotate(270deg)
+        }
+
+        37.5% {
+            transform: rotate(405deg)
+        }
+
+        50% {
+            transform: rotate(540deg)
+        }
+
+        62.5% {
+            transform: rotate(675deg)
+        }
+
+        75% {
+            transform: rotate(810deg)
+        }
+
+        87.5% {
+            transform: rotate(945deg)
+        }
+
+        to {
+            transform: rotate(1080deg)
+        }
+    }
+
+    @@keyframes left-spin {
+        from {
+            transform: rotate(130deg)
+        }
+
+        50% {
+            transform: rotate(-5deg)
+        }
+
+        to {
+            transform: rotate(130deg)
+        }
+    }
+
+    @@keyframes right-spin {
+        from {
+            transform: rotate(-130deg)
+        }
+
+        50% {
+            transform: rotate(5deg)
+        }
+
+        to {
+            transform: rotate(-130deg)
+        }
+    }*/ 
+</style>
+
+<h2>JqueryBlockUI</h2>
+
+<button id="btn_read" type="button" class="btn btn-success">讀取中</button>
+<button id="btn_fontAweSome" type="button" class="btn btn-danger">結合Font Awesome</button>
+<button id="btn_fontAweSome2" type="button" class="btn btn-default">結合Font Awesome2</button>
+<div class="mycontainer">
+    <input type="button" value="call block UI" id="btnBlockUI" />
+</div>
+<div>
+    <input type="button" value="unBlockUI" id="btnUnblockUI" />
+</div>
+
+<div class="mycontainer2">
+    <input type="button" value="call block UI" id="btnBlockUI2" />
+</div>
+<div>
+    <input type="button" value="unBlockUI" id="btnUnblockUI2" />
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#btn_read").click(function () {
+                $.blockUI({
+                    message: "<h1>讀取中...</h1>",//顯示字
+                    css: { border: "3px solid #a00" }// 邊框樣式
+                });
+                // 3秒後解除，BlockUI
+                setTimeout(function () {
+                    $.unblockUI();
+                }, 1000);
+            });
+
+            $("#btn_fontAweSome").click(function () {
+                $.blockUI({
+                    message: "<i class='fa fa-spinner fa-pulse orange' style='font-size:600%'></i>",
+                    //borderWidth:'0px' 和透明背景
+                    css: { borderWidth: '0px', backgroundColor: 'transparent' }
+                });
+                // 3秒後解除，BlockUI
+                setTimeout(function () {
+                    $.unblockUI();
+                }, 1000);
+            });
+
+            $("#btn_fontAweSome2").click(function () {
+                $.blockUI({
+                    message: "<i class='fas fa-sync'></i>",
+                    //borderWidth:'0px' 和透明背景
+                    css: { borderWidth: '0px', backgroundColor: 'transparent' }
+                });
+                // 3秒後解除，BlockUI
+                setTimeout(function () {
+                    $.unblockUI();
+                }, 1000);
+            });
+
+            $("#btnBlockUI").click(function () {
+                $('div.mycontainer').block({ message: null });
+
+                //Page Block寫法↓
+                //$.blockUI({ message: null });
+                //setTimeout(function () {
+                //$.unblockUI();
+                //}, 2000);
+            });
+
+            $("#btnUnblockUI").click(function () {
+                $('div.mycontainer').unblock();
+            });
+
+
+            $("#btnBlockUI2").click(function () {
+                $('div.mycontainer2').block({ message: null });
+                /*加入一些DOM*/
+                $(".blockMsg2").append(
+                    "<div class='spinner-layer'>" +
+                    "<div class='circle-clipper left'>" +
+                    "<div class='circle'></div>" +
+                    "</div>" +
+                    "<div class='circle-clipper right'>" +
+                    "<div class='circle'></div>" +
+                    "</div>" +
+                    "</div>");
+
+                //Page Block寫法↓
+                //$.blockUI({ message: null });
+                //setTimeout(function () {
+                //$.unblockUI();
+                //}, 2000);
+            });
+
+            $("#btnUnblockUI2").click(function () {
+                $('div.mycontainer2').unblock();
+            });
+        });
+    </script>
+}
