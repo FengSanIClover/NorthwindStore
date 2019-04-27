@@ -14,6 +14,11 @@
         <table id="dt" class="table table-striped table-bordered display" cellspacing="0">
             <thead>
                 <tr>
+                    <!--第五階段範例-->
+                    <th>
+                        <input type="checkbox" id="checkAll" name="checkAll" />
+                    </th>
+                    <!--第五階段範例-->
                     <th>#</th>
                     <th>MyTitle</th>
                     <th>MyMoney</th>
@@ -22,34 +27,34 @@
             </thead>
             <!--第一階段範例-->
             <!--<tbody>
-        <tr>
-            <td>1</td>
-            <td>Apple</td>
-            <td>2000</td>
-            <td>
-                <button type="button">Edit</button>
-                <button type="button">Delete</button>
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Banana</td>
-            <td>3000</td>
-            <td>
-                <button type="button">Edit</button>
-                <button type="button">Delete</button>
-            </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Cherry</td>
-            <td>4000</td>
-            <td>
-                <button type="button">Edit</button>
-                <button type="button">Delete</button>
-            </td>
-        </tr>
-    </tbody>-->
+                <tr>
+                    <td>1</td>
+                    <td>Apple</td>
+                    <td>2000</td>
+                    <td>
+                        <button type="button">Edit</button>
+                        <button type="button">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Banana</td>
+                    <td>3000</td>
+                    <td>
+                        <button type="button">Edit</button>
+                        <button type="button">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Cherry</td>
+                    <td>4000</td>
+                    <td>
+                        <button type="button">Edit</button>
+                        <button type="button">Delete</button>
+                    </td>
+                </tr>
+            </tbody>-->
             <!--第一階段範例-->
         </table>
     </div>
@@ -60,7 +65,7 @@
     <script>
         $(document).ready(function () {
             // 第一階段範例
-            // #region DataTables Setup 
+            // #region DataTables Setup
             // $("#dt").DataTable({  // 初始化 DataTable
             //     searching: false, // 關閉 Filter 功能
             //     columnDefs: [{    // 定義最後資料行無法排序
@@ -73,12 +78,14 @@
             // ServerSide模式:點擊分頁、排序時，
             // DataTables會自動向Server端發出Ajax
             var table = $("#dt")
+                // 第三階段範例
                 .on("preXhr.dt", function (e, settings, data) {
-                    $.blockUI(); // 第三階段範例 
+                    $.blockUI();
                 })
                 .on("xhr.dt", function (e, settings, json, xhr) {
                     $.unblockUI();
                 })
+                // 第三階段範例
                 .DataTable({
                 // 第四階段範例
                 language: {
@@ -108,12 +115,70 @@
                 searching: false, // 關閉 Filter 功能
                 deferLoading: 0, // 畫面一載入時不發出 ajax 撈資料
                 processing: true, // 讀取資料時，出現「Processing...」字眼，jQuery blockUI 也有 http://malsup.com/jquery/block/#page
+                deferRender: true, // 延遲渲染用，假使有 1000 筆資料，DataTable 有分頁控制顯示，啟用後就不會一次建立 1000 筆 Html 元素，而是依照分頁顯示數來建立 Html 元素
                 "columns": [ // 指定 Server 端的資料行繫結名稱
-                    { "data": "sysid" },
-                    { "data": "MyTitle" },
-                    { "data": "MyMoney" }
-                ],
-                ajax: { // ajax 參數在 1.9 版以前參數名稱為 sAjaxSource 
+                    //{ "data": "sysid" },
+                    //{ "data": "MyTitle" },
+                    //{ "data": "MyMoney" }
+                    // 第五階段範例
+                    {
+                        // 指定 Server 端的資料行繫結名稱
+                        data: "sysid",
+                        // 禁用排序
+                        orderable: false,
+                        // data: 當前 cell 的值，row :當前行中所有的 cell 值
+                        // 欄寬
+                        width: "50",
+                        // 欄位標題
+                        //title: "勾選",
+                        // 設定使用樣式 css
+                        //class:"xxx",
+                        // 對取到的資料作處理
+                        render: function (data, type, row, meta) {
+                            return "<input type = 'checkbox' value='" + data + "'/>"
+                        }
+                    },
+                    {
+                        data: "sysid",
+                        width: "100",
+                    },
+                    {
+                        data: "MyTitle",
+                        width:"100"
+                    },
+                    {
+                        data: "MyMoney",
+                        width:"100"
+                    },
+                    {
+                        data: "sysid",
+                        orderable: false,
+                        render: function (data, type, row, meta) {
+                            return "<a href = '" + '@Url.Action("Edit","Products")' + "?sysid = " + data + "'>Edit</a>" + "<input type='button' id='btn_delete'  value='Delete' />"
+                        }
+                    }
+                    // 第五階段範例
+                    ],
+                // 下拉選單的每頁顯示幾筆
+                // [[顯示筆數的值],[顯示筆數的顯示字]]
+                lengthMenu: [[1, 10, 20, 50, -1], [1, 10, 20, 50, "All"]],
+                // 判斷 DataTable 當中是否有資料
+                drawCallback: function (settings) {
+                 //因為DataTable ServerSide 每次發Ajax會刷新DOM(thead、tbody內的)，使用jQuery要重新註冊事件
+                 //Bootstrap tooltip
+                    $('[data-toggle="tooltip"]').tooltip();
+                    var api = this.api();
+                      if (settings.iDraw >= 2) {
+                          if (api.data().count() >= 1) {
+                                // 查有資料
+                                // Do something
+                          } else {
+                                // 查無資料
+                                // Do something
+                          }
+                      }
+                },
+                ajax: { // ajax 參數在 1.9 版以前參數名稱為 sAjaxSource
                     method: "get",
                     url: '@Url.Action("AjaxDataTable", "Products")',
                     data: function (d) { // data 參數要用 function 的方式設定，如此每次發出 Ajax 時才會重新抓表單裡的輸入值。
@@ -123,6 +188,9 @@
 
                         //↓寫一行就好
                         $.extend(true, d, formObject);
+
+                        // 把 ajax 錯誤訊息，從 alert 顯示改由 console 顯示
+                        $.fn.dataTable.ext.errMode = 'throw';
                     }
               },
                 // 預設值為：order: [[0, "asc"]]
@@ -146,8 +214,14 @@
             });
             // 第二階段範例
 
+            // 跳轉到 JqueryBlockUI 練習畫面
             $("#btn_jqueryUI").click(function () {
                 window.location.href = '@Url.Action("JqueryBlockUI", "Products")'
+            });
+
+            // 控制 checkbox 選項的全勾或全取消
+            $("input[id=checkAll]").change(function () {
+                $("#dt > tbody input:checkbox").prop("checked",$(this).prop("checked"))
             });
         });
     </script>
