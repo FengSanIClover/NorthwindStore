@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Unity;
 //透過NuGet加入System.Linq.Dynamic，Server端Linq排序用得到
 using System.Linq.Dynamic;
+using MyDataTables;
 
 namespace Northwind.WebApi.Host.Controllers
 {
@@ -39,6 +40,8 @@ namespace Northwind.WebApi.Host.Controllers
             }
         }
         ProductsAdapter productsAdapter = new ProductsAdapter();
+
+        DataTableAdapter<Products> productsDataTable = new DataTableAdapter<Products>();
         // GET: Products
         public ActionResult Index()
         {
@@ -51,7 +54,7 @@ namespace Northwind.WebApi.Host.Controllers
         }
 
         /// <summary>
-        /// 
+        /// DataTable 練習頁面
         /// </summary>
         /// <param name="draw">DataTables 自動傳遞參數</param>
         /// <param name="start">DataTables 自動傳遞參數</param>
@@ -119,10 +122,32 @@ namespace Northwind.WebApi.Host.Controllers
             return Json(returnObj,JsonRequestBehavior.AllowGet);
         }
 
-
+        /// <summary>
+        /// jqueryBlockUI 練習頁面
+        /// </summary>
+        /// <returns></returns>
         public ActionResult JqueryBlockUI()
         {
             return View();
+        }
+
+        public ActionResult IntegrateDataTable()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AjaxIntegrateDataTable(DataTablesRequest request)
+        {
+
+            var result = this.productsAdapter.SendRequest<IEnumerable<Products>>("GetProducts");
+            if (result.ReturnCode == "0000")
+            {
+                var grid = this.productsDataTable.GetResponse(request, result.Result);
+                return Json(grid, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json("OK");
         }
     }
 }

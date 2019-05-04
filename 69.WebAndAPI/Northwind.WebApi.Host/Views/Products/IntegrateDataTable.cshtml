@@ -1,0 +1,55 @@
+﻿@model Northwind.Entities.Models.Products
+@{
+    ViewBag.Title = "IntegrateDataTable";
+}
+
+<h2>IntegrateDataTable</h2>
+<button id="btn_load">Load</button>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <table id="dt" class="table table-striped table-bordered" cellspacing="0"></table>
+    </div>
+</div>
+@section scripts{
+    <script>
+    $(document).ready(function () {
+
+        var dtconfig = $.dtBaseConfig();
+
+        dtconfig.ajax = {
+            url: '@Url.Action("AjaxIntegrateDataTable", "Products")',
+            type: "Post"
+        };
+        dtconfig.columns =
+        [
+          {
+              title: "動作",
+              width: 80,
+                orderable: false,
+                defaultContent: $.dtCreateButton({ type: "edit" }) + $.dtCreateButton({ type:"delete" })
+          },
+            {
+                title: "產品編號",
+                data: "ProductID",
+                width: 80
+          },
+            {
+                title: "產品名稱",
+                data: "ProductName",
+                width: 80
+            }
+        ]
+
+        var table = $("#dt").DataTable(dtconfig);
+        table.on("preXhr.dt", function (e, settings, data) {
+            $.blockUI();
+        })
+        table.on("xhr.dt", function (e, settings, json, xhr) {
+                $.unblockUI();
+        })
+        $("#btn_load").click(function () {
+            table.ajax.reload()      
+        });
+});
+</script>
+}

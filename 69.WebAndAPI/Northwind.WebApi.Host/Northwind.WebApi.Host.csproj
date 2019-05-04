@@ -267,6 +267,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\dataTableConfig.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -288,6 +289,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Products\JqueryBlockUI.cshtml" />
+    <Content Include="Views\Products\IntegrateDataTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -323,6 +325,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\00.Library\MyDataTables\MyDataTables.csproj">
+      <Project>{940377E9-B797-4D55-A4B1-8793592C5D20}</Project>
+      <Name>MyDataTables</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\00.Library\MyLibrary\MyLibrary.csproj">
       <Project>{e6a84e0e-82dc-4fb2-bd62-7b18ec53ea8b}</Project>
       <Name>MyLibrary</Name>

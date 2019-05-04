@@ -60,7 +60,7 @@
     </div>
 </div>
 <button id="btn_jqueryUI" type="button">GO jQuery blockUI</button>
-
+<button id="btn_integrateDataTable" type="button">GO IntegrateDataTable</button>
 @section scripts{
     <script>
         $(document).ready(function () {
@@ -157,7 +157,6 @@
                             return "<a href = '" + '@Url.Action("Edit","Products")' + "?sysid = " + data + "'>Edit</a>" + "<input type='button' id='btn_delete'  value='Delete' />"
                         }
                     }
-                    // 第五階段範例
                     ],
                 // 下拉選單的每頁顯示幾筆
                 // [[顯示筆數的值],[顯示筆數的顯示字]]
@@ -178,6 +177,7 @@
                           }
                       }
                 },
+                // 第五階段範例
                 ajax: { // ajax 參數在 1.9 版以前參數名稱為 sAjaxSource
                     method: "get",
                     url: '@Url.Action("AjaxDataTable", "Products")',
@@ -217,6 +217,10 @@
             // 跳轉到 JqueryBlockUI 練習畫面
             $("#btn_jqueryUI").click(function () {
                 window.location.href = '@Url.Action("JqueryBlockUI", "Products")'
+            });
+
+            $("#btn_integrateDataTable").click(function () {
+                window.location.href = '@Url.Action("IntegrateDataTable", "Products")'
             });
 
             // 控制 checkbox 選項的全勾或全取消
